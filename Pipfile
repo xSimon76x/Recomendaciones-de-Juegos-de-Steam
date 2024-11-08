@@ -13,6 +13,7 @@ langchain-community = "*"
 pydantic = "*"
 langsmith = "*"
 openai = "*"
+langchain-cli = "*"
 
 [dev-packages]
 

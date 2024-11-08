@@ -39,14 +39,6 @@ def bot_chat(user_input, history):
 
         history.add_user_message(response['respuesta'])
 
-
-        print(history)
-
-
-    # Realiza la consulta al modelo
-    # response = chatbot(formatted_input)
-    
-    # Almacena la nueva entrada en la memoria
-    # response = memory.save_memory(user_input)
+        response = list(map(lambda x: {"respuesta": x.content, "source": response['source']}, history.messages))
 
     return response
