@@ -7,11 +7,10 @@ from langchain.prompts import PromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from models import JuegosRecomendados
 
-def bot_chat(user_input):
+def bot_chat(user_input, history):
 
     model = os.environ["OPENAI_MODEL"]
     api_key = os.environ["OPENAI_API_KEY"]
-
     llmModel = ChatOpenAI(model=model, api_key=api_key)
 
     response_schemas = [
@@ -36,6 +35,12 @@ def bot_chat(user_input):
 
     response = json_chain.invoke({"pregunta": "Necesito que me digas cual juego me recomiendas jugar, que sea de acción, basandote en las siguientes opciones: "+user_input})
 
+    if response and 'respuesta' in response:
+
+        history.add_user_message(response['respuesta'])
+
+
+        print(history)
 
 
     # Realiza la consulta al modelo

@@ -11,6 +11,8 @@ flask = "*"
 requests = "*"
 langchain-community = "*"
 pydantic = "*"
+langsmith = "*"
+openai = "*"
 
 [dev-packages]
 
